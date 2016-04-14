@@ -62,20 +62,21 @@
 			resolve:		{
 				widget:	function(WidgetFactory, $stateParams) {			//	$stateParams is injected into any resolve function that requires the state's dynamic parameter
 					return WidgetFactory.fetchById($stateParams.id);
+				}
 			}
 		});
 
-		$stateProvider.state('widget.similarWidget' {					/********  NON-PARAMETERIZED, NESTED STATE (note the dot) *********/
+		$stateProvider.state('widget.similarWidget', {					/********  NON-PARAMETERIZED, NESTED STATE (note the dot) *********/
 			url:			'/similarWidget',							//  a child's url string is APPENDED to its parent's (entire state path is /widget/:id/similarWidget)
 			templateUrl:	'/path/to/templates/widget2.html',
 			controller:		'Widget2Ctrl',
 			resolve:		{
 				widget2:	function(WidgetFactory, widget) {			//	because this state is nested within the widget state above, we can inject its resolved objects
 					return WidgetFactory.fetchById(widget.similarId);	//	here we're assuming that every widget has a similarId field that refers to another widget in the db
+				}
 			}
 		});
 	});
-
 
 /** STEP 4:  Create a controller, which can either be added to an html element (ng-controller="WidgetsCtrl") 
 			 or (MUCH more likely for the assessment) defined by a router module
@@ -99,7 +100,7 @@
 																	//  which is assigned to the newly-created widget's Mongo id (widget._id)
 			
 			});
-		});
+		};
 
 		$scope.remove = function(widget) {
 			WidgetFactory.delete(widget) 
@@ -109,7 +110,7 @@
 					$scope.widgets = widgets;
 				});
 			});
-		});	
+		};	
 	});	
 		
 		
