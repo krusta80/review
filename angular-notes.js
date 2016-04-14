@@ -23,6 +23,10 @@
 				return $http.get('/api/widgets')
 				.then(parseData);
 			},
+			update: function(id,widget) {
+				return $http.put('/api/widgets/'+id, widget)
+				.then(parseData);
+			} 
 		};
 	});
 
@@ -71,3 +75,8 @@
 			}
 		});
 	});
+
+
+/** STEP 4:  Create a controller, 
+
+
