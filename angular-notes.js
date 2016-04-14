@@ -120,7 +120,7 @@
 				- Directives are often used as "black boxes":  each is meant to be ignorant of its parent's scope.  This allows for modularity and reusability.
 				- When used in isolation, directives' inputs and data bindings are an intricate dance between the html attributes of the directive tag AND the
 				  directive's isolate scope object.  (scope: {})
-				- Directive can have their own controllers (similar to how routers can), but there is little reason to do so (link is your friend)
+				- Directives can have their own controllers (similar to how routers can), but there is little reason to do so (link is your friend)
 **/
 
 	app.directive('myDirective', function() {							//  HTML ---->      <my-directive></my-directive>	
@@ -148,7 +148,7 @@
 //								(on directive's scope)	    														         	(on parent's scope)	
 
 								/** 
-									An equals sign (=) establishes a two-bind (read/write) between an object on the parent's 
+									An equals sign (=) establishes a two-way bind (read/write) between an object on the parent's 
 									scope (in this case widget) and an object on the directive's scope (in this case directiveVariableX).  
 								**/
 
@@ -173,7 +173,7 @@
 									scope.directiveVariableZ = scope.directiveVariableX.price;		//	assuming a widget has a price property
 																									//	Now if our template html has {{directiveVariableZ}} anywhere,
 																									//	it will be rendered by the DOM as the parent widget's price
-																									//	(This example assumes <my-directive> within the widget state's template)
+																									//	(This example assumes WidgetCtrl as myDirective's parent)
 
 			}
 		};
